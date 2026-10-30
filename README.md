@@ -15,10 +15,13 @@ Aurora Threads has a growing volume of data but struggles to turn it into action
 Use DAX and M language in Power BI to answer key business questions about sales performance, customer behaviour and product trends, using dynamic calculations that give the boutique clear, actionable insights.
 
 ## My role and approach
-1. **Customer purchase categories (M language):** created a custom column that groups purchases into Low, Medium and High quantity categories, to show how many products fall into each band. [Add the thresholds you used.]
-2. **Revenue after discount (DAX calculated column):** created a column that removes the discount from each transaction, giving the true revenue per transaction. [Paste your formula here.]
-3. **Weekday (DAX calculated column):** created a column showing the weekday of each transaction, to support analysis of sales patterns by day. [Paste your formula here.]
-4. **Total quantity sold (DAX measure):** created a measure that totals units sold and recalculates as the report is filtered by store. [Paste your formula here.]
+1. **Customer purchase categories (M language):** created a custom column that groups purchases into Low, Medium and High quantity categories, to show how many products fall into each band. [if [Quantity] < 7 then "Low"
+else if [Quantity] >= 7 and [Quantity] <= 10 then "Meduim"
+else "High")]
+2. **Revenue after discount (DAX calculated column):** created a column that removes the discount from each transaction, giving the true revenue per transaction. [Revenue = (AuroraData[Quantity] * AuroraData[Sales Amount]) * (1 - AuroraData[Discount])]
+3. **Weekday (DAX calculated column):** created a column showing the weekday of each transaction, to support analysis of sales patterns by day. [Transaction Weekday = FORMAT(AuroraData[Date], "DDDD")
+/// This shows the weeday a particular transaction occured]
+4. **Total quantity sold (DAX measure):** created a measure that totals units sold and recalculates as the report is filtered by store. [Total QuantitySold = SUM(AuroraData[Quantity])]
 5. **Dashboard:** built a one-page Power BI report with store slicers (Store A, B and C), KPI cards, charts and a customer table.
 
 
